@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantifiers in Discrete Mathematics</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #35424a;
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        section {
+            margin: 20px 0;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #35424a;
+        }
+        pre {
+            background: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        ul {
+            margin: 10px 0;
+            padding: 0;
+        }
+        ul li {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        .quiz-section {
+            margin-top: 30px;
+        }
+        .question {
+            margin: 15px 0;
+        }
+        .question h4 {
+            margin-bottom: 10px;
+        }
+        .question input[type="radio"] {
+            margin-right: 10px;
+        }
+        .feedback {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Quantifiers in Discrete Mathematics</h1>
+    </header>
+    <div class="container">
+        <section>
+            <h2>Introduction</h2>
+            <p>Quantifiers are symbols used in logic to express the quantity of specimens that satisfy a given condition. The two main types are universal and existential quantifiers.</p>
+        </section>
+
+        <section>
+            <h2>Universal Quantifier</h2>
+            <p>The universal quantifier (denoted by ∀) asserts that a predicate holds for all elements in a domain. It can be expressed in various forms:</p>
+            <ul>
+                <li>For all x, p(x)</li>
+                <li>For every x, p(x)</li>
+                <li>Given any x, p(x)</li>
+            </ul>
+            <pre>∀x p(x)</pre>
+            <h3>Example:</h3>
+            <p>The statement "For any real number x, we always have x² ≥ 0" can be expressed as:</p>
+            <pre>∀x ∈ ℝ (x² ≥ 0)</pre>
+        </section>
+
+        <section>
+            <h2>Existential Quantifier</h2>
+            <p>The existential quantifier (denoted by ∃) asserts that there is at least one element in a domain for which the predicate holds. It can be expressed as:</p>
+            <ul>
+                <li>There exists an x such that p(x)</li>
+                <li>For some x, p(x)</li>
+            </ul>
+            <pre>∃x p(x)</pre>
+            <h3>Example:</h3>
+            <p>The proposition "There exists a prime number x such that x + 2 is also prime" can be expressed as:</p>
+            <pre>∃x (x is prime ∧ (x + 2) is prime)</pre>
+        </section>
+
+        <section class="quiz-section">
+            <h2>Exercises</h2>
+
+            <!-- Quiz Question 1 -->
+            <div class="question">
+                <h4>1. Determine whether the following statement is true or false:</h4>
+                <pre>∀x ∈ ℝ (x > 5)</pre>
+                <label><input type="radio" name="q1" value="true">True</label><br>
+                <label><input type="radio" name="q1" value="false">False</label><br>
+                <div class="feedback" id="feedback-q1"></div>
+            </div>
+
+            <!-- Quiz Question 2 -->
+            <div class="question">
+                <h4>2. There exists an even prime integer. True or False?</h4>
+                <label><input type="radio" name="q2" value="true">True</label><br>
+                <label><input type="radio" name="q2" value="false">False</label><br>
+                <div class="feedback" id="feedback-q2"></div>
+            </div>
+
+            <!-- Quiz Question 3 -->
+            <div class="question">
+                <h4>3. Negate this statement: "For all cats, if a cat eats 3 meals a day, then that cat weighs at least 10 lbs."</h4>
+                <label><input type="radio" name="q3" value="a">For some cats, if a cat eats 3 meals a day, then that cat weighs less than 10 lbs.</label><br>
+                <label><input type="radio" name="q3" value="b">There exists a cat that eats 3 meals a day and weighs less than 10 lbs.</label><br>
+                <label><input type="radio" name="q3" value="c">For all cats, if a cat eats 3 meals a day, then that cat weighs more than 10 lbs.</label><br>
+                <div class="feedback" id="feedback-q3"></div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Function to check the answers and provide feedback
+        function checkAnswers() {
+            // Question 1
+            const q1Answer = document.querySelector('input[name="q1"]:checked');
+            const feedbackQ1 = document.getElementById('feedback-q1');
+            if (q1Answer) {
+                if (q1Answer.value === 'false') {
+                    feedbackQ1.textContent = "Correct! The statement is false because not all real numbers are greater than 5.";
+                    feedbackQ1.className = "feedback correct";
+                } else {
+                    feedbackQ1.textContent = "Incorrect. The statement is false because not all real numbers are greater than 5.";
+                    feedbackQ1.className = "feedback incorrect";
+                }
+            }
+
+            // Question 2
+            const q2Answer = document.querySelector('input[name="q2"]:checked');
+            const feedbackQ2 = document.getElementById('feedback-q2');
+            if (q2Answer) {
+                if (q2Answer.value === 'true') {
+                    feedbackQ2.textContent = "Correct! The number 2 is an even prime integer.";
+                    feedbackQ2.className = "feedback correct";
+                } else {
+                    feedbackQ2.textContent = "Incorrect. The number 2 is an even prime integer.";
+                    feedbackQ2.className = "feedback incorrect";
+                }
+            }
+
+            // Question 3
+            const q3Answer = document.querySelector('input[name="q3"]:checked');
+            const feedbackQ3 = document.getElementById('feedback-q3');
+            if (q3Answer) {
+                if (q3Answer.value === 'b') {
+                    feedbackQ3.textContent = "Correct! The negation is: There exists a cat that eats 3 meals a day and weighs less than 10 lbs.";
+                    feedbackQ3.className = "feedback correct";
+                } else {
+                    feedbackQ3.textContent = "Incorrect. The correct negation is: There exists a cat that eats 3 meals a day and weighs less than 10 lbs.";
+                    feedbackQ3.className = "feedback incorrect";
+                }
+            }
+        }
+
+        // Event listeners for the quiz questions
+        document.querySelectorAll('input[type="radio"]').forEach(input => {
+            input.addEventListener('change', checkAnswers);
+        });
+    </script>
+</body>
+</html>
